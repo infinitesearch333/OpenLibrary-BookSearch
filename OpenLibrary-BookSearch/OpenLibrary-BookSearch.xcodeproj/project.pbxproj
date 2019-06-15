@@ -8,20 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		BA376FCE22B530A300798750 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA376FCD22B530A300798750 /* AppDelegate.swift */; };
-		BA376FD022B530A300798750 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA376FCF22B530A300798750 /* ViewController.swift */; };
 		BA376FD322B530A300798750 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA376FD122B530A300798750 /* Main.storyboard */; };
 		BA376FD522B530A700798750 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA376FD422B530A700798750 /* Assets.xcassets */; };
 		BA376FD822B530A700798750 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA376FD622B530A700798750 /* LaunchScreen.storyboard */; };
+		BA376FE122B5373C00798750 /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA376FE022B5373C00798750 /* Lato-Semibold.ttf */; };
+		BA376FE322B537FD00798750 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA376FE222B537FD00798750 /* MainScreenView.swift */; };
+		BA376FE722B539EC00798750 /* MainScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA376FE622B539EC00798750 /* MainScreenPresenter.swift */; };
+		BA376FEA22B53B3300798750 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA376FE922B53B3300798750 /* Constants.swift */; };
+		BA376FEE22B5731300798750 /* BookSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA376FED22B5731300798750 /* BookSearchManager.swift */; };
+		BA376FF022B573A100798750 /* WishlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA376FEF22B573A100798750 /* WishlistManager.swift */; };
+		BA376FF222B57E8300798750 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA376FF122B57E8300798750 /* Lato-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BA376FCA22B530A300798750 /* OpenLibrary-BookSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OpenLibrary-BookSearch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA376FCD22B530A300798750 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BA376FCF22B530A300798750 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BA376FD222B530A300798750 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA376FD422B530A700798750 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA376FD722B530A700798750 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA376FD922B530A700798750 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA376FE022B5373C00798750 /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
+		BA376FE222B537FD00798750 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
+		BA376FE622B539EC00798750 /* MainScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenPresenter.swift; sourceTree = "<group>"; };
+		BA376FE922B53B3300798750 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BA376FED22B5731300798750 /* BookSearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchManager.swift; sourceTree = "<group>"; };
+		BA376FEF22B573A100798750 /* WishlistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistManager.swift; sourceTree = "<group>"; };
+		BA376FF122B57E8300798750 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +66,68 @@
 		BA376FCC22B530A300798750 /* OpenLibrary-BookSearch */ = {
 			isa = PBXGroup;
 			children = (
+				BA376FEB22B572FA00798750 /* Models */,
+				BA376FE822B53B2200798750 /* Constants */,
+				BA376FE522B539D700798750 /* Presenters */,
+				BA376FE422B5380200798750 /* Views */,
+				BA376FDF22B5372500798750 /* Fonts */,
 				BA376FCD22B530A300798750 /* AppDelegate.swift */,
-				BA376FCF22B530A300798750 /* ViewController.swift */,
 				BA376FD122B530A300798750 /* Main.storyboard */,
 				BA376FD422B530A700798750 /* Assets.xcassets */,
 				BA376FD622B530A700798750 /* LaunchScreen.storyboard */,
 				BA376FD922B530A700798750 /* Info.plist */,
 			);
 			path = "OpenLibrary-BookSearch";
+			sourceTree = "<group>";
+		};
+		BA376FDF22B5372500798750 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BA376FF122B57E8300798750 /* Lato-Regular.ttf */,
+				BA376FE022B5373C00798750 /* Lato-Semibold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		BA376FE422B5380200798750 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BA376FE222B537FD00798750 /* MainScreenView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BA376FE522B539D700798750 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				BA376FE622B539EC00798750 /* MainScreenPresenter.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		BA376FE822B53B2200798750 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				BA376FE922B53B3300798750 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		BA376FEB22B572FA00798750 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BA376FEC22B5730000798750 /* Managers */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BA376FEC22B5730000798750 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				BA376FED22B5731300798750 /* BookSearchManager.swift */,
+				BA376FEF22B573A100798750 /* WishlistManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +189,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA376FD822B530A700798750 /* LaunchScreen.storyboard in Resources */,
+				BA376FE122B5373C00798750 /* Lato-Semibold.ttf in Resources */,
+				BA376FF222B57E8300798750 /* Lato-Regular.ttf in Resources */,
 				BA376FD522B530A700798750 /* Assets.xcassets in Resources */,
 				BA376FD322B530A300798750 /* Main.storyboard in Resources */,
 			);
@@ -135,8 +203,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA376FD022B530A300798750 /* ViewController.swift in Sources */,
 				BA376FCE22B530A300798750 /* AppDelegate.swift in Sources */,
+				BA376FEE22B5731300798750 /* BookSearchManager.swift in Sources */,
+				BA376FE322B537FD00798750 /* MainScreenView.swift in Sources */,
+				BA376FE722B539EC00798750 /* MainScreenPresenter.swift in Sources */,
+				BA376FF022B573A100798750 /* WishlistManager.swift in Sources */,
+				BA376FEA22B53B3300798750 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

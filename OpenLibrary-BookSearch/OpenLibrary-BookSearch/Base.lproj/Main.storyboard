@@ -1,24 +1,148 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6UL-Lv-7aH">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+        <array key="Lato-Semibold.ttf">
+            <string>Lato-Semibold</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Main Screen View-->
+        <scene sceneID="dM8-Sj-a6W">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="6UL-Lv-7aH" customClass="MainScreenView" customModule="OpenLibrary_BookSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0HG-7c-j00">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search books by author, title or isbn" translatesAutoresizingMaskIntoConstraints="NO" id="cs7-X8-yxj">
+                                <rect key="frame" x="10" y="100" width="355" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1k-NY-OZS" userLabel="Top_Bar">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Current_Tab_Indicator" translatesAutoresizingMaskIntoConstraints="NO" id="zjF-sb-8L4" userLabel="Current_Tab_Indicator">
+                                        <rect key="frame" x="38.666666666666657" y="90" width="110" height="10"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="QSD-nR-leS" userLabel="Navigation_Tabs">
+                                        <rect key="frame" x="0.0" y="30" width="375" height="70"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0A-Oz-0f6" userLabel="Book_Search_Button">
+                                                <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="70"/>
+                                                <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="19"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-14"/>
+                                                <state key="normal" title="Book Search">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="userSelectedTab:" destination="6UL-Lv-7aH" eventType="touchUpInside" id="AaE-cM-mHE"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JyQ-0J-rIf" userLabel="Wislist_Button">
+                                                <rect key="frame" x="187.66666666666663" y="0.0" width="187.33333333333337" height="70"/>
+                                                <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="19"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-14"/>
+                                                <state key="normal" title="Wishlist">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="userSelectedTab:" destination="6UL-Lv-7aH" eventType="touchUpInside" id="3fO-bd-QX0"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.19607843137254902" green="0.45098039215686275" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="zjF-sb-8L4" firstAttribute="centerX" secondItem="b0A-Oz-0f6" secondAttribute="centerX" id="7o2-tx-FAl"/>
+                                    <constraint firstAttribute="trailing" secondItem="QSD-nR-leS" secondAttribute="trailing" id="Yh4-RO-kVv"/>
+                                    <constraint firstItem="zjF-sb-8L4" firstAttribute="height" secondItem="b0A-Oz-0f6" secondAttribute="height" multiplier="0.142857" id="c24-9E-EPC"/>
+                                    <constraint firstItem="QSD-nR-leS" firstAttribute="height" secondItem="a1k-NY-OZS" secondAttribute="height" multiplier="0.7" id="cq9-4A-Cpi"/>
+                                    <constraint firstItem="QSD-nR-leS" firstAttribute="leading" secondItem="a1k-NY-OZS" secondAttribute="leading" id="crQ-mF-cJT"/>
+                                    <constraint firstAttribute="bottom" secondItem="zjF-sb-8L4" secondAttribute="bottom" id="gdO-MN-jq8"/>
+                                    <constraint firstAttribute="bottom" secondItem="QSD-nR-leS" secondAttribute="bottom" id="lY0-RR-RWk"/>
+                                    <constraint firstItem="zjF-sb-8L4" firstAttribute="width" secondItem="b0A-Oz-0f6" secondAttribute="width" multiplier="0.586135" id="moq-if-xIU"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0J-4b-gCG" userLabel="Main_Area">
+                                <rect key="frame" x="0.0" y="156" width="375" height="622"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_message_1" translatesAutoresizingMaskIntoConstraints="NO" id="Pav-cq-kjk" userLabel="Image Message">
+                                        <rect key="frame" x="147" y="176.66666666666669" width="81" height="82.333333333333314"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Pav-cq-kjk" secondAttribute="height" multiplier="116:118" id="aUD-DV-ZgW"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome! Search for books." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2K-df-cI7" userLabel="Message">
+                                        <rect key="frame" x="0.0" y="269" width="375" height="43.333333333333314"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
+                                        <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bJy-R1-XgD">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="622"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="bJy-R1-XgD" firstAttribute="top" secondItem="Y0J-4b-gCG" secondAttribute="top" id="56c-V0-c3X"/>
+                                    <constraint firstItem="bJy-R1-XgD" firstAttribute="leading" secondItem="Y0J-4b-gCG" secondAttribute="leading" id="Dr8-YA-y8U"/>
+                                    <constraint firstItem="x2K-df-cI7" firstAttribute="leading" secondItem="Y0J-4b-gCG" secondAttribute="leading" id="JNi-r0-cUX"/>
+                                    <constraint firstAttribute="trailing" secondItem="bJy-R1-XgD" secondAttribute="trailing" id="TiB-gV-jq9"/>
+                                    <constraint firstItem="Pav-cq-kjk" firstAttribute="centerX" secondItem="Y0J-4b-gCG" secondAttribute="centerX" id="ZJg-nb-3rS"/>
+                                    <constraint firstItem="Pav-cq-kjk" firstAttribute="width" secondItem="Y0J-4b-gCG" secondAttribute="width" multiplier="0.216" id="fEb-tV-u3r"/>
+                                    <constraint firstAttribute="bottom" secondItem="bJy-R1-XgD" secondAttribute="bottom" id="gIQ-kd-Wmc"/>
+                                    <constraint firstItem="x2K-df-cI7" firstAttribute="top" secondItem="Pav-cq-kjk" secondAttribute="bottom" constant="10" id="gWs-4Z-CuL"/>
+                                    <constraint firstItem="Pav-cq-kjk" firstAttribute="centerY" secondItem="Y0J-4b-gCG" secondAttribute="centerY" multiplier="0.7" id="h93-uC-bdT"/>
+                                    <constraint firstAttribute="trailing" secondItem="x2K-df-cI7" secondAttribute="trailing" id="uoQ-Lj-f7X"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Y0J-4b-gCG" firstAttribute="leading" secondItem="0HG-7c-j00" secondAttribute="leading" id="6HE-9X-hMz"/>
+                            <constraint firstAttribute="trailing" secondItem="Y0J-4b-gCG" secondAttribute="trailing" id="GvM-4s-nM5"/>
+                            <constraint firstItem="a1k-NY-OZS" firstAttribute="leading" secondItem="0HG-7c-j00" secondAttribute="leading" id="Hyg-jI-nJM"/>
+                            <constraint firstAttribute="trailing" secondItem="cs7-X8-yxj" secondAttribute="trailing" constant="10" id="NIl-Rx-NL6"/>
+                            <constraint firstItem="a1k-NY-OZS" firstAttribute="height" secondItem="0HG-7c-j00" secondAttribute="height" multiplier="0.123153" id="Pol-zy-KmR"/>
+                            <constraint firstItem="Y0J-4b-gCG" firstAttribute="top" secondItem="cs7-X8-yxj" secondAttribute="bottom" id="SXt-t5-xq5"/>
+                            <constraint firstItem="cs7-X8-yxj" firstAttribute="leading" secondItem="0HG-7c-j00" secondAttribute="leading" constant="10" id="Xqf-rC-rfi"/>
+                            <constraint firstAttribute="trailing" secondItem="a1k-NY-OZS" secondAttribute="trailing" id="Yy7-0r-lgT"/>
+                            <constraint firstItem="cs7-X8-yxj" firstAttribute="top" secondItem="a1k-NY-OZS" secondAttribute="bottom" id="dFx-ae-JzI"/>
+                            <constraint firstItem="lWJ-gT-kE5" firstAttribute="bottom" secondItem="Y0J-4b-gCG" secondAttribute="bottom" id="fli-Qh-RsA"/>
+                            <constraint firstItem="a1k-NY-OZS" firstAttribute="top" secondItem="0HG-7c-j00" secondAttribute="top" id="ugw-kx-8sG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lWJ-gT-kE5"/>
                     </view>
+                    <connections>
+                        <outlet property="bookList" destination="bJy-R1-XgD" id="rXx-uy-eb4"/>
+                        <outlet property="bookSearchBar" destination="cs7-X8-yxj" id="qe7-vM-Yf7"/>
+                        <outlet property="bookSearchButton" destination="b0A-Oz-0f6" id="Q7p-yd-Fe4"/>
+                        <outlet property="currentTabIndicator" destination="zjF-sb-8L4" id="F2X-r5-HHS"/>
+                        <outlet property="imageMessage" destination="Pav-cq-kjk" id="KDm-04-dM6"/>
+                        <outlet property="message" destination="x2K-df-cI7" id="6O3-XH-Wja"/>
+                        <outlet property="wishlistButton" destination="JyQ-0J-rIf" id="2b5-i4-QrR"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fEA-cM-Apn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-426" y="421"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Current_Tab_Indicator" width="100" height="5"/>
+        <image name="image_message_1" width="79" height="80"/>
+    </resources>
 </document>
