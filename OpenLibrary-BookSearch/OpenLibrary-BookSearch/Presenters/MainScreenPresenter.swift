@@ -11,6 +11,7 @@ import Foundation
 protocol MainScreenPresenterDelegate: NSObjectProtocol {
     func updateTopBar(moveIndicatorToThe direction: Direction)
     func updateMainArea(withImage image: ImageMessage, withMessage message: Message )
+    func updateBookList()
 }
 
 class MainScreenPresenter {
@@ -21,6 +22,7 @@ class MainScreenPresenter {
     
     // Presenter internal state elements
     private var currentAppState = AppState.BookSearch
+    private var bookSearchTimer = Timer()
     
     
     
@@ -49,5 +51,43 @@ class MainScreenPresenter {
                 // FIXME: Update view's book list with wishlist books
             }
         }
+    }
+    
+    func requestBookSearch(for bookQuery: String) {
+        if bookQuery != "" {
+            bookSearchTimer.invalidate()
+            bookSearchTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(beginRequest), userInfo: bookQuery, repeats: false)
+            
+        } else {
+            return
+        }
+    }
+    
+    @objc func beginRequest() {
+        if let bookQuery = bookSearchTimer.userInfo as? String {
+            // FIXME: CALL API
+            bookSearchManager.requestAPI(for: bookQuery) { (requestSucceeded) in
+                if requestSucceeded {
+                    self.delegate?.updateBookList()
+                    
+                } else {
+                    self.delegate?.updateMainArea(withImage: .NoResultsFound, withMessage: .NoResultsFound)
+                }
+            }
+        }
+    }
+    
+    func requestBookCount() -> Int {
+        switch currentAppState {
+        case .BookSearch:
+            return bookSearchManager.getBookResultsCount()
+            
+        case .Wishlist:
+            return bookSearchManager.getBookResultsCount()
+        }
+    }
+    
+    func requestBook(atIndex index: Int) -> Book {
+        return bookSearchManager.getBook(atIndex: index)
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainScreenView: UIViewController, MainScreenPresenterDelegate {
+class MainScreenView: UIViewController, MainScreenPresenterDelegate, UISearchBarDelegate {
     // User interface elements
     @IBOutlet weak var currentTabIndicator: UIImageView!
     @IBOutlet weak var bookSearchButton: UIButton!
@@ -26,6 +26,9 @@ class MainScreenView: UIViewController, MainScreenPresenterDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.delegate = self
+        bookSearchBar.delegate = self
+        bookList.delegate = self
+        bookList.dataSource = self
     }
     
     // User initiated events
@@ -33,6 +36,12 @@ class MainScreenView: UIViewController, MainScreenPresenterDelegate {
         if let selectedTab = AppState(rawValue: sender.titleLabel!.text!) {
             presenter.changeAppState(to: selectedTab)
         }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let bookQuery = searchText
+        
+        presenter.requestBookSearch(for: bookQuery)
     }
 }
 
@@ -81,4 +90,31 @@ extension MainScreenView {
             self.message.text = message.rawValue
         }
     }
+    
+    func updateBookList() {
+        DispatchQueue.main.async {
+            self.bookList.isHidden = false
+            self.bookList.reloadData()
+        }
+    }
+}
+
+
+// Booklist internal functions
+extension MainScreenView: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presenter.requestBookCount()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let book = presenter.requestBook(atIndex: indexPath.row)
+        
+        let bookPreviewCell = tableView.dequeueReusableCell(withIdentifier: "BookPreviewCell") as! BookPreviewCellView
+        
+        bookPreviewCell.setup(for: book)
+        
+        return bookPreviewCell
+    }
+    
+    
 }

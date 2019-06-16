@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA33D2D022B5E0F200049A74 /* BookPreviewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA33D2CF22B5E0F200049A74 /* BookPreviewCellView.swift */; };
 		BA376FCE22B530A300798750 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA376FCD22B530A300798750 /* AppDelegate.swift */; };
 		BA376FD322B530A300798750 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA376FD122B530A300798750 /* Main.storyboard */; };
 		BA376FD522B530A700798750 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA376FD422B530A700798750 /* Assets.xcassets */; };
@@ -18,9 +19,13 @@
 		BA376FEE22B5731300798750 /* BookSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA376FED22B5731300798750 /* BookSearchManager.swift */; };
 		BA376FF022B573A100798750 /* WishlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA376FEF22B573A100798750 /* WishlistManager.swift */; };
 		BA376FF222B57E8300798750 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA376FF122B57E8300798750 /* Lato-Regular.ttf */; };
+		BACB222F22B596DC007BAC15 /* APIRequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACB222E22B596DC007BAC15 /* APIRequestResult.swift */; };
+		BACB223122B596FC007BAC15 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACB223022B596FC007BAC15 /* Book.swift */; };
+		BACE404522B5D6A100E46030 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BACE404422B5D6A100E46030 /* Lato-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA33D2CF22B5E0F200049A74 /* BookPreviewCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPreviewCellView.swift; sourceTree = "<group>"; };
 		BA376FCA22B530A300798750 /* OpenLibrary-BookSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OpenLibrary-BookSearch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA376FCD22B530A300798750 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA376FD222B530A300798750 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -34,6 +39,9 @@
 		BA376FED22B5731300798750 /* BookSearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchManager.swift; sourceTree = "<group>"; };
 		BA376FEF22B573A100798750 /* WishlistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistManager.swift; sourceTree = "<group>"; };
 		BA376FF122B57E8300798750 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		BACB222E22B596DC007BAC15 /* APIRequestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestResult.swift; sourceTree = "<group>"; };
+		BACB223022B596FC007BAC15 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		BACE404422B5D6A100E46030 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +91,7 @@
 		BA376FDF22B5372500798750 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				BACE404422B5D6A100E46030 /* Lato-Bold.ttf */,
 				BA376FF122B57E8300798750 /* Lato-Regular.ttf */,
 				BA376FE022B5373C00798750 /* Lato-Semibold.ttf */,
 			);
@@ -93,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				BA376FE222B537FD00798750 /* MainScreenView.swift */,
+				BA33D2CF22B5E0F200049A74 /* BookPreviewCellView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -116,6 +126,7 @@
 		BA376FEB22B572FA00798750 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BACB222D22B596C3007BAC15 /* Models */,
 				BA376FEC22B5730000798750 /* Managers */,
 			);
 			path = Models;
@@ -128,6 +139,15 @@
 				BA376FEF22B573A100798750 /* WishlistManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		BACB222D22B596C3007BAC15 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BACB222E22B596DC007BAC15 /* APIRequestResult.swift */,
+				BACB223022B596FC007BAC15 /* Book.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA376FD822B530A700798750 /* LaunchScreen.storyboard in Resources */,
+				BACE404522B5D6A100E46030 /* Lato-Bold.ttf in Resources */,
 				BA376FE122B5373C00798750 /* Lato-Semibold.ttf in Resources */,
 				BA376FF222B57E8300798750 /* Lato-Regular.ttf in Resources */,
 				BA376FD522B530A700798750 /* Assets.xcassets in Resources */,
@@ -203,11 +224,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BACB223122B596FC007BAC15 /* Book.swift in Sources */,
 				BA376FCE22B530A300798750 /* AppDelegate.swift in Sources */,
 				BA376FEE22B5731300798750 /* BookSearchManager.swift in Sources */,
 				BA376FE322B537FD00798750 /* MainScreenView.swift in Sources */,
+				BA33D2D022B5E0F200049A74 /* BookPreviewCellView.swift in Sources */,
 				BA376FE722B539EC00798750 /* MainScreenPresenter.swift in Sources */,
 				BA376FF022B573A100798750 /* WishlistManager.swift in Sources */,
+				BACB222F22B596DC007BAC15 /* APIRequestResult.swift in Sources */,
 				BA376FEA22B53B3300798750 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
