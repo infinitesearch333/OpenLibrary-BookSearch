@@ -12,6 +12,7 @@ protocol MainScreenPresenterDelegate: NSObjectProtocol {
     func updateTopBar(moveIndicatorToThe direction: Direction)
     func updateMainArea(withImage image: ImageMessage, withMessage message: Message )
     func updateBookList()
+    func presentBookDetailPopup()
 }
 
 class MainScreenPresenter {
@@ -23,6 +24,7 @@ class MainScreenPresenter {
     // Presenter internal state elements
     private var currentAppState = AppState.BookSearch
     private var bookSearchTimer = Timer()
+    private var selectedBook: Book?
     
     
     
@@ -89,5 +91,14 @@ class MainScreenPresenter {
     
     func requestBook(atIndex index: Int) -> Book {
         return bookSearchManager.getBook(atIndex: index)
+    }
+    
+    func presentBookDetailPopup(at index: Int) {
+        selectedBook = bookSearchManager.getBook(atIndex: index)
+        delegate?.presentBookDetailPopup()
+    }
+    
+    func getSelectedBook() -> Book {
+        return selectedBook!
     }
 }

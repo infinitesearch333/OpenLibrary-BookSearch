@@ -19,7 +19,7 @@ class MainScreenView: UIViewController, MainScreenPresenterDelegate, UISearchBar
     @IBOutlet weak var message: UILabel!
     
     // View internal elements
-    let presenter = MainScreenPresenter()
+    private let presenter = MainScreenPresenter()
     
     
     // Inital view setup
@@ -50,14 +50,14 @@ extension MainScreenView {
     func updateTopBar(moveIndicatorToThe direction: Direction) {
         switch direction {
         case .Right:
-            UIView.animateKeyframes(withDuration: 1.3, delay: 0, options: .calculationModeCubic, animations: {
+            UIView.animateKeyframes(withDuration: 0.8, delay: 0, options: .calculationModeCubic, animations: {
                 UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.3, animations: {
                     let translationY = -self.bookSearchBar.frame.height
                     
                     self.bookSearchBar.transform = CGAffineTransform(translationX: 0, y: translationY)
                 })
                 
-                UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 1.0, animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.5, animations: {
                     let x = self.wishlistButton.frame.midX - (self.currentTabIndicator.frame.width / 2)
                     let y = self.currentTabIndicator.frame.origin.y
                     
@@ -68,15 +68,15 @@ extension MainScreenView {
             })
         
         case .Left:
-            UIView.animateKeyframes(withDuration: 1.3, delay: 0, options: .calculationModeCubic, animations: {
-                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1.0, animations: {
+            UIView.animateKeyframes(withDuration: 0.8, delay: 0, options: .calculationModeCubic, animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
                     let x = self.bookSearchButton.frame.midX - (self.currentTabIndicator.frame.width / 2)
                     let y = self.currentTabIndicator.frame.origin.y
                     
                     self.currentTabIndicator.frame.origin = CGPoint(x: x, y: y)
                 })
                 
-                UIView.addKeyframe(withRelativeStartTime: 1.0, relativeDuration: 0.3, animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.3, animations: {
                     self.bookSearchBar.transform = CGAffineTransform(translationX: 0, y: 0)
                 })
             })
@@ -97,6 +97,15 @@ extension MainScreenView {
             self.bookList.reloadData()
         }
     }
+    
+    func presentBookDetailPopup() {
+        performSegue(withIdentifier: "BookDetailsSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationView = segue.destination as! BookDatailsView
+        destinationView.passBookToPresenter(book: presenter.getSelectedBook())
+    }
 }
 
 
@@ -116,5 +125,8 @@ extension MainScreenView: UITableViewDelegate, UITableViewDataSource {
         return bookPreviewCell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.presentBookDetailPopup(at: indexPath.row)
+        bookList.deselectRow(at: indexPath, animated: true)
+    }
 }
