@@ -12,10 +12,12 @@ class BookCoverCell: UICollectionViewCell {
     let bookCover = UIImageView()
     
     func setupCell(for book: Book) {
+        // Setting up asthetics
+        bookCover.image = UIImage(data: book.coverData)
+        
         self.contentView.addSubview(bookCover)
         
-        bookCover.image = UIImage(data: book.cover_data!)
-        
+        // Setting up constraints
         bookCover.translatesAutoresizingMaskIntoConstraints = false
         bookCover.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor, constant: 1).isActive = true
         bookCover.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: 1).isActive = true

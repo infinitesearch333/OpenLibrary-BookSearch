@@ -2,23 +2,22 @@
 //  Book.swift
 //  OpenLibrary-BookSearch
 //
-//  Created by Sergio Rosendo on 6/15/19.
+//  Created by Sergio Rosendo on 6/18/19.
 //  Copyright © 2019 Sergio Rosendo. All rights reserved.
 //
 
 import Foundation
+import RealmSwift
 
-class Book: Decodable {
-    let cover_i: Int?
-    var cover_data: Data?
-    
-    let title: String?
-    let subtitle: String?
-    
-    let author_name: [String]?
-    
-    let first_publish_year: Int?
-    let publisher: [String]?
-    
-    let edition_count: Int?
+@objcMembers class Book: Object {
+    dynamic var coverID: Int = Int.min
+    dynamic var coverData: Data = Data()
+    dynamic var title: String = ""
+    dynamic var subtitle: String = ""
+    dynamic var authorName: String = ""
+    dynamic var firstPublishYear: Int = Int.min
+    dynamic var publisher: String = ""
+    dynamic var editionCount: Int = Int.min
+    dynamic var isInWishlist: Bool = false
+
 }

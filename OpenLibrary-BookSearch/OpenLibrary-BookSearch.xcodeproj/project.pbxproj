@@ -20,12 +20,11 @@
 		BA376FEE22B5731300798750 /* BookSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA376FED22B5731300798750 /* BookSearchManager.swift */; };
 		BA376FF022B573A100798750 /* WishlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA376FEF22B573A100798750 /* WishlistManager.swift */; };
 		BA376FF222B57E8300798750 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA376FF122B57E8300798750 /* Lato-Regular.ttf */; };
+		BA58623B22B8C8CE00FAD09F /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA58623A22B8C8CE00FAD09F /* Book.swift */; };
 		BA84A21522B7043200AA6267 /* BookDatailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA84A21422B7043200AA6267 /* BookDatailsView.swift */; };
 		BA84A21722B7060500AA6267 /* BookCoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA84A21622B7060500AA6267 /* BookCoverCell.swift */; };
 		BA84A21922B7061300AA6267 /* BookInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA84A21822B7061300AA6267 /* BookInfoCell.swift */; };
 		BA84A21B22B7312100AA6267 /* BookDetailsViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA84A21A22B7312100AA6267 /* BookDetailsViewPresenter.swift */; };
-		BACB222F22B596DC007BAC15 /* APIRequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACB222E22B596DC007BAC15 /* APIRequestResult.swift */; };
-		BACB223122B596FC007BAC15 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACB223022B596FC007BAC15 /* Book.swift */; };
 		BACE404522B5D6A100E46030 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BACE404422B5D6A100E46030 /* Lato-Bold.ttf */; };
 /* End PBXBuildFile section */
 
@@ -46,12 +45,11 @@
 		BA376FED22B5731300798750 /* BookSearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchManager.swift; sourceTree = "<group>"; };
 		BA376FEF22B573A100798750 /* WishlistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistManager.swift; sourceTree = "<group>"; };
 		BA376FF122B57E8300798750 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		BA58623A22B8C8CE00FAD09F /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		BA84A21422B7043200AA6267 /* BookDatailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDatailsView.swift; sourceTree = "<group>"; };
 		BA84A21622B7060500AA6267 /* BookCoverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCoverCell.swift; sourceTree = "<group>"; };
 		BA84A21822B7061300AA6267 /* BookInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoCell.swift; sourceTree = "<group>"; };
 		BA84A21A22B7312100AA6267 /* BookDetailsViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsViewPresenter.swift; sourceTree = "<group>"; };
-		BACB222E22B596DC007BAC15 /* APIRequestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestResult.swift; sourceTree = "<group>"; };
-		BACB223022B596FC007BAC15 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		BACE404422B5D6A100E46030 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		EBB96A89F1CE739161B62938 /* Pods-OpenLibrary-BookSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenLibrary-BookSearch.release.xcconfig"; path = "Target Support Files/Pods-OpenLibrary-BookSearch/Pods-OpenLibrary-BookSearch.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,7 +72,6 @@
 				70219437C67C9838C2C53C13 /* Pods-OpenLibrary-BookSearch.debug.xcconfig */,
 				EBB96A89F1CE739161B62938 /* Pods-OpenLibrary-BookSearch.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -197,8 +194,7 @@
 		BACB222D22B596C3007BAC15 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BACB222E22B596DC007BAC15 /* APIRequestResult.swift */,
-				BACB223022B596FC007BAC15 /* Book.swift */,
+				BA58623A22B8C8CE00FAD09F /* Book.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -328,7 +324,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BACB223122B596FC007BAC15 /* Book.swift in Sources */,
 				BA376FCE22B530A300798750 /* AppDelegate.swift in Sources */,
 				BA376FEE22B5731300798750 /* BookSearchManager.swift in Sources */,
 				BA376FE322B537FD00798750 /* MainScreenView.swift in Sources */,
@@ -338,8 +333,8 @@
 				BA376FE722B539EC00798750 /* MainScreenPresenter.swift in Sources */,
 				BA84A21922B7061300AA6267 /* BookInfoCell.swift in Sources */,
 				BA376FF022B573A100798750 /* WishlistManager.swift in Sources */,
-				BACB222F22B596DC007BAC15 /* APIRequestResult.swift in Sources */,
 				BA376FEA22B53B3300798750 /* Constants.swift in Sources */,
+				BA58623B22B8C8CE00FAD09F /* Book.swift in Sources */,
 				BA84A21B22B7312100AA6267 /* BookDetailsViewPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -488,6 +483,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A8X8LDJB8C;
 				INFOPLIST_FILE = "OpenLibrary-BookSearch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -506,6 +502,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A8X8LDJB8C;
 				INFOPLIST_FILE = "OpenLibrary-BookSearch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Setup and user initiated events
 class MainScreenView: UIViewController, MainScreenPresenterDelegate, UISearchBarDelegate {
     // User interface elements
     @IBOutlet weak var currentTabIndicator: UIImageView!
@@ -17,6 +18,7 @@ class MainScreenView: UIViewController, MainScreenPresenterDelegate, UISearchBar
     @IBOutlet weak var bookList: UITableView!
     @IBOutlet weak var imageMessage: UIImageView!
     @IBOutlet weak var message: UILabel!
+    
     
     // View internal elements
     private let presenter = MainScreenPresenter()
@@ -31,12 +33,14 @@ class MainScreenView: UIViewController, MainScreenPresenterDelegate, UISearchBar
         bookList.dataSource = self
     }
     
+    
     // User initiated events
     @IBAction func userSelectedTab(_ sender: UIButton) {
         if let selectedTab = AppState(rawValue: sender.titleLabel!.text!) {
             presenter.changeAppState(to: selectedTab)
         }
     }
+    
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let bookQuery = searchText
@@ -83,28 +87,43 @@ extension MainScreenView {
         }
     }
     
+    
     func updateMainArea(withImage image: ImageMessage, withMessage message: Message) {
         DispatchQueue.main.async {
+            self.view.endEditing(true)
             self.bookList.isHidden = true
             self.imageMessage.image = UIImage(named: image.rawValue)
             self.message.text = message.rawValue
         }
     }
     
+    
     func updateBookList() {
         DispatchQueue.main.async {
+            self.view.endEditing(true)
             self.bookList.isHidden = false
             self.bookList.reloadData()
         }
     }
     
+    
     func presentBookDetailPopup() {
         performSegue(withIdentifier: "BookDetailsSegue", sender: nil)
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationView = segue.destination as! BookDatailsView
-        destinationView.passBookToPresenter(book: presenter.getSelectedBook())
+        destinationView.passBookToPresenter(book: presenter.getSelectedBook(), bookIndexPath: presenter.getSelectedBookIndexPath())
+    }
+    
+    
+    func updatePreviewCell(at indexPath: IndexPath) {
+        print("Final")
+        DispatchQueue.main.async {
+            print("Idex Path \(indexPath)")
+            self.bookList.reloadData()
+        }
     }
 }
 
@@ -115,18 +134,20 @@ extension MainScreenView: UITableViewDelegate, UITableViewDataSource {
         return presenter.requestBookCount()
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let book = presenter.requestBook(atIndex: indexPath.row)
         
         let bookPreviewCell = tableView.dequeueReusableCell(withIdentifier: "BookPreviewCell") as! BookPreviewCellView
         
-        bookPreviewCell.setup(for: book)
+        bookPreviewCell.setup(for: book, indexPath: indexPath)
         
         return bookPreviewCell
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.presentBookDetailPopup(at: indexPath.row)
+        presenter.presentBookDetailPopup(at: indexPath)
         bookList.deselectRow(at: indexPath, animated: true)
     }
 }

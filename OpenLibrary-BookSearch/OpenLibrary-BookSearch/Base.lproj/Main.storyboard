@@ -127,7 +127,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3dq-mc-ayI" userLabel="Wishlist_Button_Background">
-                                                                    <rect key="frame" x="91.666666666666657" y="90" width="123.66666666666666" height="28"/>
+                                                                    <rect key="frame" x="91.666666666666686" y="90" width="137" height="28"/>
                                                                     <color key="backgroundColor" red="0.3529411764705882" green="0.60392156862745094" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -137,14 +137,17 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97O-RZ-mFY" userLabel="Wishlist_Button">
-                                                                    <rect key="frame" x="91.666666666666657" y="82" width="123.66666666666666" height="44"/>
+                                                                    <rect key="frame" x="91.666666666666686" y="82" width="137" height="44"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="44" id="jfm-oG-dfz"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
+                                                                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
                                                                     <state key="normal" title="Want to read">
                                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="userPressedWishlistButton:" destination="40C-uz-RcZ" eventType="touchUpInside" id="gsQ-gR-BxJ"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -152,7 +155,7 @@
                                                                 <constraint firstItem="v3f-NM-zXV" firstAttribute="leading" secondItem="UEm-yd-UgE" secondAttribute="leading" constant="10" id="4IR-Fw-alY"/>
                                                                 <constraint firstItem="v3f-NM-zXV" firstAttribute="top" secondItem="UEm-yd-UgE" secondAttribute="top" constant="10" id="89J-Z6-AsL"/>
                                                                 <constraint firstItem="v3f-NM-zXV" firstAttribute="width" secondItem="UEm-yd-UgE" secondAttribute="width" multiplier="0.208451" id="HTQ-ye-4Zr"/>
-                                                                <constraint firstItem="97O-RZ-mFY" firstAttribute="width" secondItem="UEm-yd-UgE" secondAttribute="width" multiplier="0.360563" id="IFd-AZ-M5C"/>
+                                                                <constraint firstItem="97O-RZ-mFY" firstAttribute="width" secondItem="UEm-yd-UgE" secondAttribute="width" multiplier="0.4" id="IFd-AZ-M5C"/>
                                                                 <constraint firstItem="97O-RZ-mFY" firstAttribute="width" secondItem="3dq-mc-ayI" secondAttribute="width" id="RKF-in-gUV"/>
                                                                 <constraint firstItem="97O-RZ-mFY" firstAttribute="bottom" secondItem="v3f-NM-zXV" secondAttribute="bottom" id="TXx-hV-nWA"/>
                                                                 <constraint firstItem="97O-RZ-mFY" firstAttribute="centerY" secondItem="3dq-mc-ayI" secondAttribute="centerY" id="YGp-vM-6pv"/>
@@ -179,6 +182,8 @@
                                                     <outlet property="bookAuthors" destination="o29-Rr-cCm" id="FXs-8F-9Lq"/>
                                                     <outlet property="bookCover" destination="v3f-NM-zXV" id="nhe-Us-eUx"/>
                                                     <outlet property="bookTitles" destination="jab-hT-8Cw" id="WFL-PI-8RA"/>
+                                                    <outlet property="wishlistButton" destination="97O-RZ-mFY" id="v3Z-VD-Zcj"/>
+                                                    <outlet property="wishlistButtonBackground" destination="3dq-mc-ayI" id="ogU-xz-LCM"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -341,6 +346,9 @@
                                                 <state key="normal" title="Want to read">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="userPressedWishlistButton:" destination="EZh-Df-dhk" eventType="touchUpInside" id="4ef-sc-Xck"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -402,6 +410,8 @@
                         <outlet property="bookDetailsCarousel" destination="0zx-Aj-2qI" id="xg7-96-a25"/>
                         <outlet property="bookTitle" destination="LTh-Z2-CB1" id="FDO-dL-cSw"/>
                         <outlet property="pageController" destination="bfx-gU-8dI" id="cpR-UQ-Y80"/>
+                        <outlet property="wishlistButton" destination="hZD-QY-TBG" id="2xW-i9-An6"/>
+                        <outlet property="wishlistButtonBackground" destination="RLi-63-apy" id="Zkm-k7-iWr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Er-Zu-iBb" userLabel="First Responder" sceneMemberID="firstResponder"/>

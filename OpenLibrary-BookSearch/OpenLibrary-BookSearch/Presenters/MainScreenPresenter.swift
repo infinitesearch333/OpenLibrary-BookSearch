@@ -12,22 +12,37 @@ protocol MainScreenPresenterDelegate: NSObjectProtocol {
     func updateTopBar(moveIndicatorToThe direction: Direction)
     func updateMainArea(withImage image: ImageMessage, withMessage message: Message )
     func updateBookList()
+    func updatePreviewCell(at indexPath: IndexPath)
     func presentBookDetailPopup()
 }
 
+// MARK: Setup and helper functions
 class MainScreenPresenter {
     // Connections to view and model manager
     weak var delegate: MainScreenPresenterDelegate?
     private let bookSearchManager = BookSearchManager()
     private let wishlistManager = WishlistManager()
     
+    
     // Presenter internal state elements
     private var currentAppState = AppState.BookSearch
     private var bookSearchTimer = Timer()
     private var selectedBook: Book?
+    private var selectedBookIndexPath: IndexPath!
     
     
+    init(){
+        setupObervers()
+    }
     
+    
+    private func setupObervers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateMainScreen), name: NSNotification.Name("update_main_screen_manager"), object: nil)
+    }
+}
+
+// Functions called view
+extension MainScreenPresenter {
     func changeAppState(to state: AppState) {
         // Changing app state
         if state == currentAppState {
@@ -50,10 +65,11 @@ class MainScreenPresenter {
                 delegate?.updateMainArea(withImage: .SearchForBooks, withMessage: .SearchForBooksToAddToWishlist)
                 
             } else {
-                // FIXME: Update view's book list with wishlist books
+                delegate?.updateBookList()
             }
         }
     }
+    
     
     func requestBookSearch(for bookQuery: String) {
         if bookQuery != "" {
@@ -65,9 +81,9 @@ class MainScreenPresenter {
         }
     }
     
+    
     @objc func beginRequest() {
         if let bookQuery = bookSearchTimer.userInfo as? String {
-            // FIXME: CALL API
             bookSearchManager.requestAPI(for: bookQuery) { (requestSucceeded) in
                 if requestSucceeded {
                     self.delegate?.updateBookList()
@@ -79,26 +95,74 @@ class MainScreenPresenter {
         }
     }
     
+    
     func requestBookCount() -> Int {
         switch currentAppState {
         case .BookSearch:
             return bookSearchManager.getBookResultsCount()
             
         case .Wishlist:
-            return bookSearchManager.getBookResultsCount()
+            return wishlistManager.getWishlistCount()
         }
     }
     
+    
     func requestBook(atIndex index: Int) -> Book {
-        return bookSearchManager.getBook(atIndex: index)
+        let book: Book
+        
+        switch currentAppState {
+        case .BookSearch:
+            book = bookSearchManager.getBook(atIndex: index)
+            
+        case .Wishlist:
+            book = wishlistManager.getBook(atIndex: index)
+            
+        }
+        return book
     }
     
-    func presentBookDetailPopup(at index: Int) {
-        selectedBook = bookSearchManager.getBook(atIndex: index)
+    
+    func presentBookDetailPopup(at indexPath: IndexPath) {
+        selectedBook = bookSearchManager.getBook(atIndex: indexPath.row)
+        selectedBookIndexPath = indexPath
         delegate?.presentBookDetailPopup()
     }
     
+    
     func getSelectedBook() -> Book {
         return selectedBook!
+    }
+    
+    
+    func getSelectedBookIndexPath() -> IndexPath {
+        return selectedBookIndexPath!
+    }
+}
+
+// Functions called by wishlist manager when updates occure
+// FIXME:
+extension MainScreenPresenter {
+    @objc func updateMainScreen(notification: NSNotification) {
+        print("HHHHHH")
+        if let updateType = notification.userInfo?["update_type"] as? String {
+            print("HERE1")
+            if updateType == "update_preview_cell" {
+                if let bookIndexPath = notification.userInfo?["book_index_path"] as? IndexPath {
+                    delegate?.updatePreviewCell(at: bookIndexPath)
+                }
+                
+            } else if updateType == "update_booklist" {
+                print("print(\(currentAppState))")
+                if currentAppState == .Wishlist {
+                    if wishlistManager.getWishlistCount() == 0 {
+                        print("------------")
+                        delegate?.updateMainArea(withImage: .SearchForBooks, withMessage: .SearchForBooksToAddToWishlist)
+                        
+                    } else {
+                        delegate?.updateBookList()
+                    }
+                }
+            }
+        }
     }
 }
