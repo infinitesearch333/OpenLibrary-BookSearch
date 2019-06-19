@@ -67,13 +67,14 @@ extension WishlistManager{
                 
                 // Getting new wishlist
                 wishList = Array(realm.objects(Book.self))
-                
-                // Notifying presenter of a change
-                let userInfo = ["update_type": "update_booklist"]
-                
-                NotificationCenter.default.post(name: NSNotification.Name("update_main_screen_manager"), object: nil, userInfo: userInfo as [AnyHashable : Any])
             }
+            
         }
+        
+        // Notifying presenter of a change
+        let userInfo = ["update_type": "update_booklist"]
+        
+        NotificationCenter.default.post(name: NSNotification.Name("update_main_screen_manager"), object: nil, userInfo: userInfo as [AnyHashable : Any])
     }
 }
 

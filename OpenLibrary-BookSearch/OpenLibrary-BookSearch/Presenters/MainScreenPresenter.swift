@@ -123,7 +123,13 @@ extension MainScreenPresenter {
     
     
     func presentBookDetailPopup(at indexPath: IndexPath) {
-        selectedBook = bookSearchManager.getBook(atIndex: indexPath.row)
+        if currentAppState == .BookSearch {
+            selectedBook = bookSearchManager.getBook(atIndex: indexPath.row)
+            
+        } else {
+            selectedBook = wishlistManager.getBook(atIndex: indexPath.row)
+        }
+        
         selectedBookIndexPath = indexPath
         delegate?.presentBookDetailPopup()
     }
@@ -137,30 +143,32 @@ extension MainScreenPresenter {
     func getSelectedBookIndexPath() -> IndexPath {
         return selectedBookIndexPath!
     }
+    
+    func getCurrentAppState() -> AppState {
+        return currentAppState
+    }
 }
 
 // Functions called by wishlist manager when updates occure
 // FIXME:
 extension MainScreenPresenter {
     @objc func updateMainScreen(notification: NSNotification) {
-        print("HHHHHH")
         if let updateType = notification.userInfo?["update_type"] as? String {
-            print("HERE1")
             if updateType == "update_preview_cell" {
                 if let bookIndexPath = notification.userInfo?["book_index_path"] as? IndexPath {
                     delegate?.updatePreviewCell(at: bookIndexPath)
                 }
                 
             } else if updateType == "update_booklist" {
-                print("print(\(currentAppState))")
                 if currentAppState == .Wishlist {
                     if wishlistManager.getWishlistCount() == 0 {
-                        print("------------")
                         delegate?.updateMainArea(withImage: .SearchForBooks, withMessage: .SearchForBooksToAddToWishlist)
                         
                     } else {
                         delegate?.updateBookList()
                     }
+                } else {
+                    delegate?.updateBookList()
                 }
             }
         }

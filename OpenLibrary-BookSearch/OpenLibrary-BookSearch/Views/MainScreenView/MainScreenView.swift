@@ -103,6 +103,9 @@ extension MainScreenView {
             self.view.endEditing(true)
             self.bookList.isHidden = false
             self.bookList.reloadData()
+            if self.presenter.getCurrentAppState() == .Wishlist {
+                self.bookList.scrollToRow(at: IndexPath(row: 0, section: 0), at: .none, animated: false)
+            }
         }
     }
     
@@ -149,5 +152,9 @@ extension MainScreenView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.presentBookDetailPopup(at: indexPath)
         bookList.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.01
     }
 }
